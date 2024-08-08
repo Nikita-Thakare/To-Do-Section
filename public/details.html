@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>INFO</title>
+    <!-- Include Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex flex-col items-center">
+    <!-- Fixed top bar with search functionality -->
+    <div class="flex items-center justify-between w-full px-4 mt-10">
+      <div
+        class="relative flex items-center rounded-full border lg:ml-96 sm:ml-10 border-gray-300 bg-gray-100 px-4 py-2 max-w-md w-full"
+      >
+        <img src="img/search.svg" alt="Search" class="w-5 h-5 mr-2" />
+        <p class="text-black text-sm">Search...</p>
+      </div>
+      <div class="flex items-center space-x-4 lg:mr-20 sm:mr-10">
+        <!-- Settings Icon with Notification -->
+        <div
+          class="relative bg-gray-200 p-2 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img src="img/setting.svg" alt="Settings" class="w-5 h-5" />
+          <img
+            src="img/circle.svg"
+            alt="Notification"
+            class="absolute top-4 right-4 w-2 h-2"
+          />
+        </div>
+
+        <!-- Bell Icon -->
+        <div
+          class="relative bg-gray-200 p-2 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img src="img/bell.svg" alt="Bell" class="w-5 h-5" />
+        </div>
+
+        <!-- Profile Image -->
+        <div
+          class="relative bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img
+            src="img/girl.svg"
+            alt="Profile"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Small rectangles for navigation -->
+    <div
+      class="flex flex-wrap justify-center mt-10 px-4 space-x-4 lg:space-x-7"
+    >
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Personal
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Time off
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Assets
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Training
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center"
+      >
+        To-Do
+      </div>
+    </div>
+    <div
+      class="mt-10 lg:ml-48 sm:ml-20 w-full max-w-4xl bg-white border border-gray-300 rounded-lg p-6 flex flex-col"
+    >
+      <!-- Smaller rectangle with image -->
+      <div class="flex flex-col lg:flex-row items-start">
+        <!-- Image block -->
+        <div class="relative w-32 h-32 ml-5 lg:mr-10 lg:mb-0 mb-4">
+          <img
+            src="img/girl.svg"
+            alt="Profile Image"
+            class="w-full h-full object-cover rounded-tl-lg"
+          />
+
+          <!-- Text block -->
+          <div class="flex flex-col">
+            <div class="absolute top-0 left-44 w-[145px] h-[20px]">
+              <h2
+                class="lg:text-3xl sm:text-2xl font-semibold text-gray-800 whitespace-nowrap"
+              >
+                Jane Joyey.
+              </h2>
+            </div>
+            <div class="absolute top-10 left-44 flex flex-col text-gray-500">
+              <div class="flex items-center mb-2">
+                <img src="img/FT.svg" alt="Full-Time" class="w-4 h-4 mr-2" />
+                <span class="whitespace-nowrap">Full-Time</span>
+              </div>
+              <div class="flex items-center mb-2">
+                <img
+                  src="img/people.svg"
+                  alt="Marketing"
+                  class="w-4 h-4 mr-2"
+                />
+                <span class="whitespace-nowrap">Marketing</span>
+              </div>
+              <div class="flex items-center">
+                <img
+                  src="img/location.svg"
+                  alt="Location"
+                  class="w-4 h-4 mr-2"
+                />
+                <span class="whitespace-nowrap">Pune</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fles flex-col sm:flex-row">
+          <div
+            class="flex items-center lg:mt-10 sm:mt-0 lg:ml-36 sm:ml-28 text-gray-500"
+          >
+            <img src="img/sms.svg" alt="Email" class="w-4 h-4 mr-2" />
+            jane.joyey@cloudprism.in
+          </div>
+          <div class="flex items-center mt-2 lg:ml-36 sm:ml-28 text-gray-500">
+            <img src="img/call-slash.svg" alt="Phone" class="w-4 h-4 mr-2" />
+            xx xxxx xxxx xx
+          </div>
+        </div>
+        <div class="flex mt-9 ml-4">
+          <div class="w-[1px] h-[65px] border-l border-gray-300"></div>
+          <div class="ml-5">
+            <p class="text-gray-800 font-semibold">Reports to</p>
+            <div class="flex gap-12 mt-2">
+              <div class="flex items-center">
+                <img
+                  src="img/Subtract.svg"
+                  alt="Reports to Icon"
+                  class="w-5 h-5 mr-2"
+                />
+                <p class="text-gray-500">Daisy Jane</p>
+              </div>
+              <div class="bg-white border border-gray-300 rounded-lg p-1">
+                <p class="text-gray-500 text-sm">Request change</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative w-full max-w-2xl">
+      <div class="flex justify-start mt-8">
+        <div
+          class="flex items-start custom-font text-[13px] lg:text-[16px] text-gray-800 font-semibold leading-[20px] lg:leading-[24px]"
+        >
+          <img
+            src="img/profile-circle.svg"
+            alt="img"
+            class="w-[48px] h-[28px] lg:w-[64px] lg:h-[36px] mb-2"
+          />
+          <span class="ml-2">Basic Information</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col ml-2 mt-5">
+        <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <!-- Employee No. Section -->
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">
+              Employee No.
+            </div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="text"
+                placeholder="Employee no"
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Status Section -->
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">Status</div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="text"
+                placeholder="Status"
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Job Title Section -->
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">
+              Designation
+            </div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="text"
+                placeholder="Designation"
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Department Section -->
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">Team</div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="text"
+                placeholder="Team"
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Date Hired Section -->
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">
+              First name
+            </div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="text"
+                placeholder="First name"
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Work Location Section -->
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">
+              Middle name
+            </div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="text"
+                placeholder="Middle name "
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Work Phone Section -->
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">
+              Last name
+            </div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="text"
+                placeholder="Last name"
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Mobile Number Section -->
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">
+              Preferred name
+            </div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="text"
+                placeholder="Preferred name"
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Extension Section -->
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">
+              Birth Date
+            </div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="date"
+                placeholder="Birth Date"
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Work Email Section -->
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">Gender</div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="text"
+                placeholder="Gender"
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Pay Group Section -->
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">
+              Maritial Status
+            </div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="text"
+                placeholder="Maritial Status"
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Pay Rate Section -->
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">
+              Shirt Size
+            </div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="text"
+                placeholder="Shirt Size"
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Pay Frequency Section -->
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">SSN</div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="text"
+                placeholder="Pay SSN"
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">NIN</div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="text"
+                placeholder="NIN"
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+          <div class="flex flex-col">
+            <div class="relative custom-width custom-height mb-2">
+              Tax File Number
+            </div>
+            <div
+              class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+            >
+              <input
+                type="text"
+                placeholder="Tax File Number"
+                class="w-full h-full px-2 rounded-sm"
+              />
+              <div
+                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+              ></div>
+            </div>
+          </div>
+        </div>
+        <div class="relative w-full max-w-2xl">
+          <div class="flex justify-start mt-8">
+            <div
+              class="flex items-start custom-font text-[13px] lg:text-[16px] text-gray-800 font-semibold leading-[20px] lg:leading-[24px]"
+            >
+              <img
+                src="img/home.svg"
+                alt="img"
+                class="w-[48px] h-[28px] lg:w-[64px] lg:h-[36px] mb-2"
+              />
+              <span class="ml-2">Address</span>
+            </div>
+          </div>
+          <div class="flex flex-col mt-5 ml-2">
+            <div class="grid grid-cols-2 sm:grid-cols-1 lg:grid-cols-3 gap-3">
+              <div class="relative custom-width custom-height mb-2">
+                Address line 1
+              </div>
+              <div
+                class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+              >
+                <input
+                  type="text"
+                  placeholder="Address line 1"
+                  class="w-full h-full px-2 rounded-sm"
+                />
+                <div
+                  class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+                ></div>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <div class="relative custom-width custom-height mb-2">
+                Country
+              </div>
+              <div
+                class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+              >
+                <input
+                  type="text"
+                  placeholder="country"
+                  class="w-full h-full px-2 rounded-sm"
+                />
+                <div
+                  class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+                ></div>
+              </div>
+            </div>
+            <div class="flex flex-col">
+              <div class="relative custom-width custom-height mb-2">State</div>
+              <div
+                class="relative w-full h-8 sm:h-10 md:h-12 lg:h-10 xl:h-16 border border-gray-300 custom-radius rounded-sm opacity-100 flex items-center"
+              >
+                <input
+                  type="text"
+                  placeholder="State"
+                  class="w-full h-full px-2 rounded-sm"
+                />
+                <div
+                  class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
