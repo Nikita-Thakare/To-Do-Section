@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HRMS</title>
+    <!-- Include Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex flex-col items-center">
+    <!-- Fixed top bar with search functionality -->
+
+    <div class="flex items-center justify-between w-full px-4 mt-10">
+      <div
+        class="relative flex items-center rounded-full border lg:ml-96 sm:ml-10 border-gray-300 bg-gray-100 px-4 py-2 max-w-md w-full"
+      >
+        <img src="img/search.svg" alt="Search" class="w-5 h-5 mr-2" />
+        <p class="text-black text-sm">Search...</p>
+      </div>
+      <div class="flex items-center space-x-4 lg:mr-20 sm:mr-10">
+        <!-- Settings Icon with Notification -->
+        <div
+          class="relative bg-gray-200 p-2 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img src="img/setting.svg" alt="Settings" class="w-5 h-5" />
+          <img
+            src="img/circle.svg"
+            alt="Notification"
+            class="absolute top-4 right-4 w-2 h-2"
+          />
+        </div>
+
+        <!-- Bell Icon -->
+        <div
+          class="relative bg-gray-200 p-2 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img src="img/bell.svg" alt="Bell" class="w-5 h-5" />
+        </div>
+
+        <!-- Profile Image -->
+        <div
+          class="relative bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img
+            src="img/girl.svg"
+            alt="Profile"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Small rectangles for navigation -->
+    <div
+      class="flex flex-wrap justify-center mt-10 px-4 space-x-4 lg:space-x-7"
+    >
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Personal
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Time off
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Assets
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Training
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center"
+      >
+        To-Do
+      </div>
+    </div>
+
+    <div
+      class="mt-10 lg:ml-48 sm:ml-20 w-full max-w-4xl bg-white border border-gray-300 rounded-lg p-6 flex flex-col"
+    >
+      <!-- Smaller rectangle with image -->
+      <div class="flex flex-col lg:flex-row items-start">
+        <!-- Image block -->
+        <div class="relative w-32 h-32 ml-5 lg:mr-10 lg:mb-0 mb-4">
+          <img
+            src="img/girl.svg"
+            alt="Profile Image"
+            class="w-full h-full object-cover rounded-tl-lg"
+          />
+
+          <!-- Text block -->
+          <div class="flex flex-col">
+            <div class="absolute top-0 left-44 w-[145px] h-[20px]">
+              <h2
+                class="lg:text-3xl sm:text-2xl font-semibold text-gray-800 whitespace-nowrap"
+              >
+                Jane Joyey.
+              </h2>
+            </div>
+            <div class="absolute top-10 left-44 flex flex-col text-gray-500">
+              <div class="flex items-center mb-2">
+                <img src="img/FT.svg" alt="Full-Time" class="w-4 h-4 mr-2" />
+                <span class="whitespace-nowrap">Full-Time</span>
+              </div>
+              <div class="flex items-center mb-2">
+                <img
+                  src="img/people.svg"
+                  alt="Marketing"
+                  class="w-4 h-4 mr-2"
+                />
+                <span class="whitespace-nowrap">Marketing</span>
+              </div>
+              <div class="flex items-center">
+                <img
+                  src="img/location.svg"
+                  alt="Location"
+                  class="w-4 h-4 mr-2"
+                />
+                <span class="whitespace-nowrap">Pune</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fles flex-col sm:flex-row">
+          <div
+            class="flex items-center lg:mt-10 sm:mt-0 lg:ml-36 sm:ml-28 text-gray-500"
+          >
+            <img src="img/sms.svg" alt="Email" class="w-4 h-4 mr-2" />
+            jane.joyey@cloudprism.in
+          </div>
+          <div class="flex items-center mt-2 lg:ml-36 sm:ml-28 text-gray-500">
+            <img src="img/call-slash.svg" alt="Phone" class="w-4 h-4 mr-2" />
+            xx xxxx xxxx xx
+          </div>
+        </div>
+        <div class="flex mt-9 ml-4">
+          <div class="w-[1px] h-[65px] border-l border-gray-300"></div>
+          <div class="ml-5">
+            <p class="text-gray-800 font-semibold">Reports to</p>
+            <div class="flex gap-12 mt-2">
+              <div class="flex items-center">
+                <img
+                  src="img/Subtract.svg"
+                  alt="Reports to Icon"
+                  class="w-5 h-5 mr-2"
+                />
+                <p class="text-gray-500">Daisy Jane</p>
+              </div>
+              <div class="bg-white border border-gray-300 rounded-lg p-1">
+                <p class="text-gray-500 text-sm">Request change</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Goals Section -->
+    <div class="relative w-full max-w-2xl ml-5">
+      <div class="flex justify-start mt-8">
+        <div
+          class="flex items-start custom-font text-[13px] lg:text-[16px] text-gray-800 font-semibold leading-[20px] lg:leading-[24px]"
+        >
+          <img
+            src="img/star.svg"
+            alt="img"
+            class="w-[24px] h-[24px] lg:w-[64px] lg:h-[36px] mb-2"
+          />
+          <span class="ml-2">Goals</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col lg:flex-row mt-5 items-center">
+        <!-- New Goal Section -->
+        <div
+          class="relative w-full lg:w-1/3 h-8 bg-white border border-gray-300 rounded-lg flex items-center mb-2 lg:mb-0"
+        >
+          <img
+            src="img/Ellipse 14 .svg"
+            alt="circle"
+            class="w-13 h-13 mr-5 absolute top-3 left-3.5"
+          />
+          <img
+            src="img/Vector 2.svg"
+            alt="line"
+            class="w-2 h-2 absolute top-3.5 left-4"
+          />
+          <img
+            src="img/Vector 1.svg"
+            alt="line"
+            class="w-2 h-2 absolute top-3.5 left-4"
+          />
+          <div class="absolute top left-10 p-1">New Goal</div>
+        </div>
+
+        <!-- Status Section (Centered) -->
+        <div
+          class="flex justify-center items-center w-full lg:w-auto my-2 lg:mx-5 ml-auto"
+        >
+          <div class="text-center">Status</div>
+        </div>
+
+        <!-- In Progress Section -->
+        <div
+          class="relative w-full lg:w-1/3 h-8 border border-gray-300 rounded-lg flex items-center"
+        >
+          <div class="absolute top left-4">In Progress</div>
+          <div
+            class="flex items-center justify-center ml-auto w-8 h-8 border border-gray-300 bg-gray-300 rounded-r-lg"
+          >
+            <img src="img/Arrow .svg" alt="line" class="w-5 h-3" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="mt-10 lg:ml-48 sm:ml-20 w-full h-auto max-w-4xl bg-white border border-gray-300 rounded-sm p-2"
+    >
+      <div
+        class="flex mt-3 text-red-600 text-sm font-semibold whitespace-nowrap ml-5"
+      >
+        Created: 01 August 2024 - Due: 12 August 2024
+      </div>
+      <div
+        class="flex mt-5 text-black lg:text-xl sm:text-lg font-semibold whitespace-nowrap ml-5"
+      >
+        Build Trust and Relationship with XYZ
+      </div>
+      <div class="flex mt-5 text-black text-sm font-serif ml-5">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam tortor
+        nulla, auctor vitae urna elementum, <br />
+        dapibus luctus neque. Sed ut fermentum augue, quis tempus justo
+      </div>
+      <div class="flex mt-8 ml-5">
+        <!-- 15% Text -->
+        <div class="text-black text-4xl font-semibold">15%</div>
+
+        <!-- COMPLETE Text -->
+        <div class="text-black text-xs mt-6 font-serif ml-2">COMPLETE</div>
+
+        <!-- Status Text -->
+        <div
+          class="text-black text-sm mt-4 font-serif lg:ml-auto sm:ml-10 ml-5 sm:mt-4"
+        >
+          Status:
+        </div>
+
+        <div
+          class="relative flex w-24 border border-gray-300 rounded-sm lg:ml-4 sm:ml-16 ml-5 mt-0 sm:mt-0"
+        >
+          <div class="absolute bottom-0 left-0 w-full h-0.5 bg-black"></div>
+
+          <div class="text-black text-lg font-semibold ml-3 mt-1">15%</div>
+
+          <img
+            src="img/pen.svg"
+            alt="pen"
+            class="w-5 h-5 absolute top-2 left-16"
+          />
+        </div>
+      </div>
+      <div
+        class="flex w-full h-2 border border-gray-300 rounded-full mt-3 bg-gray-300"
+      >
+        <div
+          class="flex w-52 h-full border border-green-500 rounded-full bg-green-500"
+        ></div>
+      </div>
+      <div
+        class="max-w-4xl h-12 border border-gray-200 mt-5 bg-gray-200 overflow-hidden flex items-center justify-center"
+      >
+        <div class="text-black text-lg font-semibold">Comments</div>
+      </div>
+      <!-- Container for images and text -->
+      <div class="flex flex-col mt-7 ml-5 space-y-14">
+        <div class="flex items-start">
+          <img src="img/girl.svg" alt="img" class="w-12 h-12" />
+
+          <div class="ml-4 flex flex-col">
+            <div class="text-black text-lg font-semibold">Colin</div>
+
+            <div class="text-black text-sm font-serif">
+              Welcome [New Employee Name] to our team as [Job Title] in
+              [Department]! Please give [him/her/them] a warm welcome!
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start">
+          <img src="img/daisy.svg" alt="img" class="w-12 h-12" />
+
+          <div class="ml-4 flex flex-col">
+            <div class="text-black text-lg font-semibold">Daisy</div>
+
+            <div class="text-black text-sm font-serif">
+              Important: [Policy Name] policy updated. Effective [Effective
+              Date]. Check your email for details.
+            </div>
+          </div>
+        </div>
+        <div class="flex items-start">
+          <img src="img/mona.svg" alt="img" class="w-12 h-12" />
+
+          <div class="ml-4 flex flex-col">
+            <div class="text-black text-lg font-semibold">Mona</div>
+
+            <div class="text-black text-sm font-serif">
+              Mandatory staff meeting on [Date] at [Time]. Please attend to
+              discuss important updates.
+            </div>
+          </div>
+        </div>
+        <div
+          class="w-full h-16 border border-gray-200 mt-5 bg-gray-200 overflow-hidden flex items-center justify-center"
+        >
+          <div
+            class="relative w-40 h-8 bg-white border border-gray-300 rounded-lg flex items-center mb-2 lg:mb-0"
+          >
+            <img
+              src="img/Ellipse 14 .svg"
+              alt="circle"
+              class="w-13 h-13 mr-5 absolute top-3 left-3.5"
+            />
+            <img
+              src="img/Vector 2.svg"
+              alt="line"
+              class="w-2 h-2 absolute top-3.5 left-4"
+            />
+            <img
+              src="img/Vector 1.svg"
+              alt="line"
+              class="w-2 h-2 absolute top-3.5 left-4"
+            />
+            <div class="absolute top left-10 p-1">Add Comment</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
