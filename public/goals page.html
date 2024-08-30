@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HRMS</title>
+    <!-- Include Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex flex-col items-center">
+    <!-- Fixed top bar with search functionality -->
+
+    <div class="flex items-center justify-between w-full px-4 mt-10">
+      <div
+        class="relative flex items-center rounded-full border lg:ml-96 sm:ml-10 border-gray-300 bg-gray-100 px-4 py-2 max-w-md w-full"
+      >
+        <img src="img/search.svg" alt="Search" class="w-5 h-5 mr-2" />
+        <p class="text-black text-sm">Search...</p>
+      </div>
+      <div class="flex items-center space-x-4 lg:mr-20 sm:mr-10">
+        <!-- Settings Icon with Notification -->
+        <div
+          class="relative bg-gray-200 p-2 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img src="img/setting.svg" alt="Settings" class="w-5 h-5" />
+          <img
+            src="img/circle.svg"
+            alt="Notification"
+            class="absolute top-4 right-4 w-2 h-2"
+          />
+        </div>
+
+        <!-- Bell Icon -->
+        <div
+          class="relative bg-gray-200 p-2 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img src="img/bell.svg" alt="Bell" class="w-5 h-5" />
+        </div>
+
+        <!-- Profile Image -->
+        <div
+          class="relative bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img
+            src="img/girl.svg"
+            alt="Profile"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Small rectangles for navigation -->
+    <div
+      class="flex flex-wrap justify-center mt-10 px-4 space-x-4 lg:space-x-7"
+    >
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Personal
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Time off
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Assets
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Training
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center"
+      >
+        To-Do
+      </div>
+    </div>
+
+    <div
+      class="mt-10 lg:ml-48 sm:ml-20 w-full max-w-4xl bg-white border border-gray-300 rounded-lg p-6 flex flex-col"
+    >
+      <!-- Smaller rectangle with image -->
+      <div class="flex flex-col lg:flex-row items-start">
+        <!-- Image block -->
+        <div class="relative w-32 h-32 ml-5 lg:mr-10 lg:mb-0 mb-4">
+          <img
+            src="img/girl.svg"
+            alt="Profile Image"
+            class="w-full h-full object-cover rounded-tl-lg"
+          />
+
+          <!-- Text block -->
+          <div class="flex flex-col">
+            <div class="absolute top-0 left-44 w-[145px] h-[20px]">
+              <h2
+                class="lg:text-3xl sm:text-2xl font-semibold text-gray-800 whitespace-nowrap"
+              >
+                Jane Joyey.
+              </h2>
+            </div>
+            <div class="absolute top-10 left-44 flex flex-col text-gray-500">
+              <div class="flex items-center mb-2">
+                <img src="img/FT.svg" alt="Full-Time" class="w-4 h-4 mr-2" />
+                <span class="whitespace-nowrap">Full-Time</span>
+              </div>
+              <div class="flex items-center mb-2">
+                <img
+                  src="img/people.svg"
+                  alt="Marketing"
+                  class="w-4 h-4 mr-2"
+                />
+                <span class="whitespace-nowrap">Marketing</span>
+              </div>
+              <div class="flex items-center">
+                <img
+                  src="img/location.svg"
+                  alt="Location"
+                  class="w-4 h-4 mr-2"
+                />
+                <span class="whitespace-nowrap">Pune</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fles flex-col sm:flex-row">
+          <div
+            class="flex items-center lg:mt-10 sm:mt-0 lg:ml-36 sm:ml-28 text-gray-500"
+          >
+            <img src="img/sms.svg" alt="Email" class="w-4 h-4 mr-2" />
+            jane.joyey@cloudprism.in
+          </div>
+          <div class="flex items-center mt-2 lg:ml-36 sm:ml-28 text-gray-500">
+            <img src="img/call-slash.svg" alt="Phone" class="w-4 h-4 mr-2" />
+            xx xxxx xxxx xx
+          </div>
+        </div>
+        <div class="flex mt-9 ml-4">
+          <div class="w-[1px] h-[65px] border-l border-gray-300"></div>
+          <div class="ml-5">
+            <p class="text-gray-800 font-semibold">Reports to</p>
+            <div class="flex gap-12 mt-2">
+              <div class="flex items-center">
+                <img
+                  src="img/Subtract.svg"
+                  alt="Reports to Icon"
+                  class="w-5 h-5 mr-2"
+                />
+                <p class="text-gray-500">Daisy Jane</p>
+              </div>
+              <div class="bg-white border border-gray-300 rounded-lg p-1">
+                <p class="text-gray-500 text-sm">Request change</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Goals Section -->
+    <div class="relative w-full max-w-2xl ml-5">
+      <div class="flex justify-start mt-8">
+        <div
+          class="flex items-start custom-font text-[13px] lg:text-[16px] text-gray-800 font-semibold leading-[20px] lg:leading-[24px]"
+        >
+          <img
+            src="img/star.svg"
+            alt="img"
+            class="w-[24px] h-[24px] lg:w-[64px] lg:h-[36px] mb-2"
+          />
+          <span class="ml-2">Goals</span>
+        </div>
+      </div>
+
+      <div class="flex flex-col lg:flex-row mt-5 items-center">
+        <!-- New Goal Section -->
+        <div
+          class="relative w-full lg:w-1/3 h-8 bg-white border border-gray-300 rounded-lg flex items-center mb-2 lg:mb-0"
+        >
+          <img
+            src="img/Ellipse 14 .svg"
+            alt="circle"
+            class="w-13 h-13 mr-5 absolute top-3 left-3.5"
+          />
+          <img
+            src="img/Vector 2.svg"
+            alt="line"
+            class="w-2 h-2 absolute top-3.5 left-4"
+          />
+          <img
+            src="img/Vector 1.svg"
+            alt="line"
+            class="w-2 h-2 absolute top-3.5 left-4"
+          />
+          <div class="absolute top left-10 p-1">New Goal</div>
+        </div>
+
+        <!-- Status Section (Centered) -->
+        <div
+          class="flex justify-center items-center w-full lg:w-auto my-2 lg:mx-5 ml-auto"
+        >
+          <div class="text-center">Status</div>
+        </div>
+
+        <!-- In Progress Section -->
+        <div
+          class="relative w-full lg:w-1/3 h-8 border border-gray-300 rounded-lg flex items-center"
+        >
+          <!-- Status Text -->
+          <div id="statusText" class="absolute top-1 left-4 text-gray-800">
+            In Progress
+          </div>
+
+          <!-- Arrow Icon (Clickable) -->
+          <div
+            class="flex items-center justify-center ml-auto w-8 h-8 border border-gray-300 bg-gray-300 rounded-r-lg cursor-pointer relative"
+            onclick="toggleDropdown()"
+          >
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M19 9l-7 7-7-7"
+              ></path>
+            </svg>
+          </div>
+
+          <!-- Dropdown Menu -->
+          <div
+            id="dropdownMenu"
+            class="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-lg shadow-lg hidden"
+          >
+            <div class="py-2">
+              <a
+                href="#"
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                onclick="updateStatus('Hold'); return false;"
+                >Hold</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                onclick="updateStatus('Complete'); return false;"
+                >Complete</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-gray-800 hover:bg-gray-200"
+                onclick="updateStatus('In Progress'); return false;"
+                >In Progress</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col lg:flex-row lg:gap-5">
+        <!-- Rectangle 1 -->
+        <div
+          class="flex flex-col mt-5 w-72 h-56 bg-white border border-gray-300 rounded-lg p-3"
+        >
+          <div
+            class="text-black lg:text-base sm:text-lg font-semibold whitespace-nowrap mt-3"
+          >
+            Build Trust and Reltion ship with XYZ
+          </div>
+
+          <div class="flex items-center mt-16 relative">
+            <div class="text-black text-4xl font-semibold">0%</div>
+            <div class="text-black text-xs ml-2 mt-5 font-serif">COMPLETE</div>
+            <img src="img/pen.svg" alt="pen" class="ml-auto mt-3 w-5 h-5" />
+          </div>
+
+          <div
+            class="relative flex w-full h-2 mt-2 border border-gray-300 rounded-full bg-gray-300"
+          ></div>
+
+          <div class="text-black text-xs ml-2 mt-5 font-serif">
+            Due: 31 August 2024
+          </div>
+        </div>
+
+        <!-- Rectangle 2 -->
+        <div
+          class="flex flex-col mt-5 w-72 h-56 bg-white border border-gray-300 rounded-lg p-3"
+        >
+          <div
+            class="text-black lg:text-base sm:text-lg font-semibold whitespace-nowrap mt-3"
+          >
+            Integrate XYZ in XYZ with no bugs <br /> xjndjcnjdsncjsd
+          </div>
+
+          <div class="flex items-center mt-10 relative">
+            <div class="text-black text-4xl font-semibold">20%</div>
+            <div class="text-black text-xs ml-2 mt-5 font-serif">COMPLETE</div>
+            <img src="img/pen.svg" alt="pen" class="ml-auto mt-3 w-5 h-5" />
+          </div>
+
+          <div
+            class="relative flex w-full h-2 mt-2 border border-gray-300 rounded-full bg-gray-300"
+          >
+            <div
+              class="absolute top-0 left-0 h-full bg-green-500 rounded-full"
+              style="width: 20%"
+            ></div>
+          </div>
+
+          <div class="text-black text-xs ml-2 mt-5 font-serif">
+            Due: 31 August 2024
+          </div>
+        </div>
+
+        <!-- Rectangle 3 -->
+        <div
+          class="flex flex-col mt-5 w-72 h-56 bg-white border border-gray-300 rounded-lg p-3"
+        >
+          <div
+            class="text-black lg:text-base sm:text-lg font-semibold whitespace-nowrap mt-3"
+          >
+            Integrate XYZ in XYZ with no bugs <br /> xjndjcnjdsncjsd
+          </div>
+
+          <div class="flex items-center mt-10 relative">
+            <div class="text-black text-4xl font-semibold">0%</div>
+            <div class="text-black text-xs ml-2 mt-5 font-serif">COMPLETE</div>
+            <img src="img/pen.svg" alt="pen" class="ml-auto mt-3 w-5 h-5" />
+          </div>
+
+          <div
+            class="relative flex w-full h-2 mt-2 border border-gray-300 rounded-full bg-gray-300"
+          ></div>
+
+          <div class="text-black text-xs ml-2 mt-5 font-serif">
+            Due: 31 August 2024
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col lg:flex-row lg:gap-5">
+        <!-- Rectangle 4 -->
+        <div
+          class="flex flex-col mt-5 w-72 h-56 bg-white border border-gray-300 rounded-lg p-3"
+        >
+          <div
+            class="text-black lg:text-base sm:text-lg font-semibold whitespace-nowrap mt-3"
+          >
+            Build Trust and Relationship with XYZ
+          </div>
+
+          <div class="flex items-center mt-16 relative">
+            <div class="text-black text-4xl font-semibold">0%</div>
+            <div class="text-black text-xs ml-2 mt-5 font-serif">COMPLETE</div>
+            <img src="img/pen.svg" alt="pen" class="ml-auto mt-3 w-5 h-5" />
+          </div>
+
+          <div
+            class="relative flex w-full h-2 mt-2 border border-gray-300 rounded-full bg-gray-300"
+          ></div>
+
+          <div class="text-red-600 text-xs ml-2 mt-5 font-serif">
+            Due: 12 August 2024
+          </div>
+        </div>
+        <div
+          class="flex flex-col mt-5 w-72 h-56 bg-white border border-gray-300 rounded-lg p-3"
+        >
+          <div
+            class="text-black lg:text-base sm:text-lg font-semibold whitespace-nowrap mt-3"
+          >
+            Integrate XYZ in XYZ with no bugs <br /> xjndjcnjdsncjsd
+          </div>
+
+          <div class="flex items-center mt-10 relative">
+            <div class="text-black text-4xl font-semibold">95%</div>
+            <div class="text-black text-xs ml-2 mt-5 font-serif">COMPLETE</div>
+            <img src="img/pen.svg" alt="pen" class="ml-auto mt-3 w-5 h-5" />
+          </div>
+
+          <div
+            class="relative flex w-full h-2 mt-2 border border-gray-300 rounded-full bg-gray-300"
+          >
+            <div
+              class="absolute top-0 left-0 h-full bg-green-500 rounded-full"
+              style="width: 95%"
+            ></div>
+          </div>
+
+          <div class="text-black text-xs ml-2 mt-5 font-serif">
+            Due: 31 August 2024
+          </div>
+        </div>
+        <div
+          class="flex flex-col mt-5 w-72 h-56 bg-white border border-gray-300 rounded-lg p-3"
+        >
+          <div
+            class="text-black lg:text-base sm:text-lg font-semibold whitespace-nowrap mt-3"
+          >
+            Integrate XYZ in XYZ with no bugs <br /> xjndjcnjdsncjsd
+          </div>
+
+          <div class="flex items-center mt-10 relative">
+            <div class="text-black text-4xl font-semibold">100%</div>
+            <div class="text-black text-xs ml-2 mt-5 font-serif">COMPLETE</div>
+            <img src="img/pen.svg" alt="pen" class="ml-auto mt-3 w-5 h-5" />
+          </div>
+
+          <div
+            class="relative flex w-full h-2 mt-2 border border-gray-300 rounded-full bg-gray-300"
+          >
+            <div
+              class="absolute top-0 left-0 h-full bg-green-500 rounded-full"
+              style="width: 100%"
+            ></div>
+          </div>
+
+          <div class="text-black text-xs ml-2 mt-5 font-serif">
+            Due: 31 August 2024
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function toggleDropdown() {
+        const dropdown = document.getElementById("dropdownMenu");
+        dropdown.classList.toggle("hidden");
+      }
+
+      function updateStatus(status) {
+        const statusText = document.getElementById("statusText");
+        statusText.textContent = status;
+
+        // Hide the dropdown after selection
+        toggleDropdown();
+      }
+      function updateProgressBar() {
+        const input = document.getElementById("percentageInput");
+        const progressBar = document.getElementById("progressBar");
+      }
+    </script>
+  </body>
+</html>
