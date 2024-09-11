@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      /* Custom styles to handle dropdown menu visibility */
+      .dropdown-menu {
+        display: none;
+      }
+      .dropdown-menu.show {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 flex flex-col h-screen">
+    <!-- Mobile Menu Button -->
+    <button id="menu-button" class="lg:hidden p-4 text-black ml-4">
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"
+        ></path>
+      </svg>
+    </button>
+
+    <div class="flex flex-col lg:flex-row flex-1">
+      <!-- Sidebar -->
+      <div
+        id="sidebar"
+        class="lg:w-64 w-full bg-gray-200 text-white flex flex-col p-4 h-screen overflow-y-auto lg:sticky lg:top-0 transition-transform transform -translate-x-full lg:translate-x-0"
+      >
+        <!-- Logo/Image -->
+        <div class="relative-container mb-8 flex items-center">
+          <img
+            src="img/logo.svg"
+            alt="Logo"
+            class="w-14 h-9 ml-4 mt-12 lg:mt-20"
+          />
+          <span
+            class="absolute-text ml-4 text-black font-semibold text-lg mt-12 lg:mt-20"
+            >ONE.HR</span
+          >
+        </div>
+        <!-- Menu Items -->
+        <nav class="flex-1 mt-10">
+          <!-- Dashboard with Dropdown -->
+          <div class="relative">
+            <a
+              href="#"
+              class="flex items-center py-2.5 px-4 rounded hover:bg-white text-white"
+              id="dashboard-toggle"
+            >
+              <img src="img/dashboard.svg" alt="img" class="w-5 h-5 mr-3" />
+              <span class="text-sm font-serif text-black">Dashboard</span>
+              <!-- Dropdown Arrow Icon -->
+              <svg
+                class="w-4 h-4 ml-auto"
+                fill="none"
+                stroke="black"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+                ></path>
+              </svg>
+            </a>
+
+            <!-- Dropdown Menu (Initially hidden) -->
+            <div class="dropdown-menu pl-8 mt-2" id="dashboard-menu">
+              <a
+                href="index.html"
+                class="block py-2.5 px-4 rounded hover:bg-gray-200 text-black"
+              >
+                Index
+              </a>
+              <a
+                href="dashboard.html"
+                class="block py-2.5 px-4 rounded hover:bg-gray-200 text-black"
+              >
+                Dashboard
+              </a>
+              <a
+                href="goals.html"
+                class="block py-2.5 px-4 rounded hover:bg-gray-200 text-black"
+              >
+                Goals
+              </a>
+              <a
+                href="goalspage.html"
+                class="block py-2.5 px-4 rounded hover:bg-gray-200 text-black"
+              >
+                Goals Page
+              </a>
+            </div>
+          </div>
+
+          <!-- Other Menu Items -->
+          <a
+            href="details.html"
+            class="flex items-center py-2.5 px-4 rounded hover:bg-white text-white"
+          >
+            <img src="img/monitor.svg" alt="img" class="w-5 h-5 mr-3" />
+            <span class="text-sm font-serif text-black">My Info</span>
+          </a>
+          <a
+            href="#People"
+            class="flex items-center py-2.5 px-4 rounded hover:bg-white text-white"
+          >
+            <img src="img/people.svg" alt="img" class="w-5 h-5 mr-3" />
+            <span class="text-sm font-serif text-black">People</span>
+          </a>
+          <a
+            href="#Payroll"
+            class="flex items-center py-2.5 px-4 rounded hover:bg-white text-white"
+          >
+            <img src="img/payroll.svg" alt="img" class="w-5 h-5 mr-3" />
+            <span class="text-sm font-serif text-black">Payroll</span>
+          </a>
+          <a
+            href="#Reports"
+            class="flex items-center py-2.5 px-4 rounded hover:bg-white text-white"
+          >
+            <img src="img/reports.svg" alt="img" class="w-5 h-5 mr-3" />
+            <span class="text-sm font-serif text-black">Reports</span>
+          </a>
+          <a
+            href="#Files"
+            class="flex items-center py-2.5 px-4 rounded hover:bg-white text-white"
+          >
+            <img src="img/files.svg" alt="img" class="w-5 h-5 mr-3" />
+            <span class="text-sm font-serif text-black">Files</span>
+            <img src="img/circle files.svg" alt="img" class="w-7 h-7 ml-10" />
+          </a>
+        </nav>
+      </div>
+
+      <div class="flex-1 p-6 overflow-y-auto">
+        <!-- Main content will be loaded here -->
+      </div>
+    </div>
+
+    <!-- JavaScript for Toggle Menu -->
+    <script>
+      const menuButton = document.getElementById("menu-button");
+      const sidebar = document.getElementById("sidebar");
+
+      menuButton.addEventListener("click", () => {
+        sidebar.classList.toggle("translate-x-0");
+        sidebar.classList.toggle("-translate-x-full");
+      });
+    </script>
+
+    <!-- JavaScript to toggle the dropdown -->
+    <script>
+      const dashboardToggle = document.getElementById("dashboard-toggle");
+      const dropdownMenu = document.getElementById("dashboard-menu");
+
+      dashboardToggle.addEventListener("click", function () {
+        dropdownMenu.classList.toggle("show"); // Toggle visibility
+      });
+
+      // Hide dropdown when a link is clicked
+      const dropdownLinks = document.querySelectorAll("#dashboard-menu a");
+      dropdownLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          dropdownMenu.classList.remove("show"); // Hide the dropdown
+        });
+      });
+
+      // Close the dropdown if clicked outside
+      document.addEventListener("click", function (event) {
+        if (
+          !dashboardToggle.contains(event.target) &&
+          !dropdownMenu.contains(event.target)
+        ) {
+          dropdownMenu.classList.remove("show");
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -9,9 +9,57 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    <style>
+      /* Sidebar Styles */
+      #sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 250px;
+        background-color: #e5e7eb;
+        z-index: 10;
+        transition: transform 0.3s ease;
+      }
+
+      /* Main Content Styles */
+      #main-content {
+        margin-left: 250px;
+        padding: 20px;
+        transition: margin-left 0.3s ease;
+      }
+
+      /* Mobile view adjustments */
+      @media (max-width: 768px) {
+        #sidebar {
+          width: 100%;
+          height: auto;
+          position: fixed;
+          transform: translateX(-100%);
+          /* Ensure it stays on top */
+          z-index: 20;
+        }
+
+        #main-content {
+          margin-left: 0;
+          padding: 10px;
+        }
+
+        #sidebar.open {
+          transform: translateX(0);
+        }
+      }
+    </style>
   </head>
   <body class="flex flex-col items-center">
     <!-- Fixed top bar with search functionality -->
+    <div class="flex flex-col lg:flex-row flex-1">
+      <!-- Sidebar -->
+      <div
+        id="sidebar"
+        class="lg:w-64 w-full bg-gray-200 text-white flex flex-col p-4 h-screen overflow-y-auto lg:sticky lg:top-0 transition-transform transform -translate-x-full lg:translate-x-0"
+      ></div>
+    </div>
 
     <div class="flex items-center justify-between w-full px-4 mt-10">
       <div
@@ -346,5 +394,14 @@
         </div>
       </div>
     </div>
+    <script>
+      // Fetch and load sidebar content
+      fetch("sidebar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("sidebar").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading sidebar:", error));
+    </script>
   </body>
 </html>

@@ -9,8 +9,51 @@
       href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
       rel="stylesheet"
     />
+    <style>
+      /* Sidebar Styles */
+      #sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 250px;
+        background-color: #e5e7eb;
+        z-index: 10;
+        transition: transform 0.3s ease;
+      }
+
+      /* Main Content Styles */
+      #main-content {
+        margin-left: 250px;
+        padding: 20px;
+        transition: margin-left 0.3s ease;
+      }
+
+      /* Mobile view adjustments */
+      @media (max-width: 768px) {
+        #sidebar {
+          width: 100%;
+          height: auto;
+          position: fixed;
+          transform: translateX(-100%);
+          /* Ensure it stays on top */
+          z-index: 20;
+        }
+
+        #main-content {
+          margin-left: 0;
+          padding: 10px;
+        }
+
+        #sidebar.open {
+          transform: translateX(0);
+        }
+      }
+    </style>
   </head>
   <body class="flex flex-col items-center">
+    <div id="sidebar"></div>
+    <!-- Sidebar -->
     <!-- Fixed top bar with search functionality -->
     <div class="flex items-center justify-between w-full px-4 mt-10">
       <div
@@ -181,18 +224,15 @@
         <div class="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           <!-- Employee No. Section -->
           <div class="flex flex-col">
-            <div class="relative mb-2">Employee No.</div>
-            <div
-              class="relative w-full border border-gray-300 rounded-sm flex items-center input-width"
-            >
+            <div class="relative mb-2 text-gray-700">Employee No.</div>
+            <div class="relative flex items-center">
               <input
                 type="text"
-                placeholder="Employee No."
-                class="w-full h-10 px-2 rounded-sm"
+                placeholder="Employee No"
+                class="w-full h-10 border border-gray-300 focus:border-black focus:ring-0 focus:outline-none rounded-sm px-3"
               />
-              <div
-                class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
-              ></div>
+              <!-- Black underline with 1px thickness, positioned inside the rounded corners -->
+              <div class="absolute bottom-0 left-0 w-full h-px bg-black"></div>
             </div>
           </div>
 
@@ -332,15 +372,20 @@
 
           <!-- Gender -->
           <div class="flex flex-col">
-            <div class="relative mb-2">Gender</div>
+            <label for="gender" class="relative mb-2">Gender </label>
             <div
               class="relative w-full border border-gray-300 rounded-sm flex items-center input-width"
             >
-              <input
-                type="Gender"
-                placeholder="Gender"
-                class="w-full h-10 px-2 rounded-sm"
-              />
+              <select
+                id="gender"
+                name="gender"
+                class="w-full h-10 px-2 rounded-sm bg-white border-none focus:outline-none focus:ring-0"
+              >
+                <option value="" disabled selected>Select Gender</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+              </select>
               <div
                 class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
               ></div>
@@ -349,15 +394,23 @@
 
           <!-- Maritial section -->
           <div class="flex flex-col">
-            <div class="relative mb-2">Maritial State</div>
+            <label for="marital-status" class="relative mb-2"
+              >Marital Status</label
+            >
             <div
               class="relative w-full border border-gray-300 rounded-sm flex items-center input-width"
             >
-              <input
-                type="text"
-                placeholder="Maritial State"
-                class="w-full h-10 px-2 rounded-sm"
-              />
+              <select
+                id="marital-status"
+                name="marital-status"
+                class="w-full h-10 px-2 rounded-sm bg-white border-none focus:outline-none focus:ring-0"
+              >
+                <option value="" disabled selected>
+                  Select Marital Status
+                </option>
+                <option value="married">Married</option>
+                <option value="unmarried">Unmarried</option>
+              </select>
               <div
                 class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
               ></div>
@@ -366,15 +419,22 @@
 
           <!--shirt size Section -->
           <div class="flex flex-col">
-            <div class="relative mb-2">Shirt Size</div>
+            <label for="shirt-size" class="relative mb-2">Shirt Size</label>
             <div
               class="relative w-full border border-gray-300 rounded-sm flex items-center input-width"
             >
-              <input
-                type="text"
-                placeholder="Shirt Size"
-                class="w-full h-10 px-2 rounded-sm"
-              />
+              <select
+                id="shirt-size"
+                name="shirt-size"
+                class="w-full h-10 px-2 rounded-sm bg-white border-none focus:outline-none focus:ring-0"
+              >
+                <option value="" disabled selected>Select Shirt Size</option>
+                <option value="s">Small (S)</option>
+                <option value="m">Medium (M)</option>
+                <option value="l">Large (L)</option>
+                <option value="xl">Extra Large (XL)</option>
+                <option value="xxl">Extra Extra Large (XXL)</option>
+              </select>
               <div
                 class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
               ></div>
@@ -484,15 +544,52 @@
 
               <!-- State -->
               <div class="flex flex-col">
-                <div class="relative mb-2">State</div>
+                <label for="state" class="relative mb-2">State</label>
                 <div
                   class="relative w-full border border-gray-300 rounded-sm flex items-center input-width"
                 >
-                  <input
-                    type="text"
-                    placeholder="State"
-                    class="w-full h-10 px-2 rounded-sm"
-                  />
+                  <select
+                    id="state"
+                    name="state"
+                    class="w-full h-10 px-2 rounded-sm bg-white border-none focus:outline-none focus:ring-0"
+                  >
+                    <option value="" disabled selected>Select State</option>
+                    <!-- Add options for Indian states here -->
+                    <option value="ap">Andhra Pradesh</option>
+                    <option value="ar">Arunachal Pradesh</option>
+                    <option value="as">Assam</option>
+                    <option value="br">Bihar</option>
+                    <option value="ch">Chandigarh</option>
+                    <option value="ct">Chhattisgarh</option>
+                    <option value="dn">Dadra and Nagar Haveli</option>
+                    <option value="dd">Daman and Diu</option>
+                    <option value="dl">Delhi</option>
+                    <option value="ga">Goa</option>
+                    <option value="gu">Gujarat</option>
+                    <option value="hr">Haryana</option>
+                    <option value="hp">Himachal Pradesh</option>
+                    <option value="jh">Jharkhand</option>
+                    <option value="ka">Karnataka</option>
+                    <option value="kl">Kerala</option>
+                    <option value="la">Ladakh</option>
+                    <option value="ld">Lakshadweep</option>
+                    <option value="mp">Madhya Pradesh</option>
+                    <option value="mh">Maharashtra</option>
+                    <option value="man">Manipur</option>
+                    <option value="me">Meghalaya</option>
+                    <option value="miz">Mizoram</option>
+                    <option value="mn">Nagaland</option>
+                    <option value="or">Odisha</option>
+                    <option value="pb">Punjab</option>
+                    <option value="rj">Rajasthan</option>
+                    <option value="sk">Sikkim</option>
+                    <option value="tn">Tamil Nadu</option>
+                    <option value="tg">Telangana</option>
+                    <option value="tr">Tripura</option>
+                    <option value="up">Uttar Pradesh</option>
+                    <option value="ut">Uttarakhand</option>
+                    <option value="wb">West Bengal</option>
+                  </select>
                   <div
                     class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
                   ></div>
@@ -500,6 +597,7 @@
               </div>
             </div>
           </div>
+
           <div class="flex flex-col mt-5 ml-2">
             <!-- Landmark -->
             <div class="grid grid-cols-1 gap-3 md:grid-cols-1 lg:grid-cols-3">
@@ -525,11 +623,35 @@
                 <div
                   class="relative w-full border border-gray-300 rounded-sm flex items-center input-width"
                 >
-                  <input
-                    type="text"
-                    placeholder="City"
-                    class="w-full h-10 px-2 rounded-sm"
-                  />
+                  <select
+                    id="city"
+                    name="city"
+                    class="w-full h-10 px-2 rounded-sm bg-white border-none focus:outline-none focus:ring-0"
+                  >
+                    <option value="" disabled selected>Select City</option>
+                    <!-- Cities in Maharashtra -->
+                    <optgroup label="Maharashtra">
+                      <option value="mum">Mumbai</option>
+                      <option value="pun">Pune</option>
+                      <option value="nag">Nagpur</option>
+                      <option value="aur">Aurangabad</option>
+                      <option value="nas">Nashik</option>
+                      <option value="jal">Jalgaon</option>
+                      <option value="kol">Kolhapur</option>
+                      <option value="sol">Solapur</option>
+                    </optgroup>
+                    <!-- Cities in Bihar -->
+                    <optgroup label="Bihar">
+                      <option value="pat">Patna</option>
+                      <option value="gaya">Gaya</option>
+                      <option value="bhg">Bhagalpur</option>
+                      <option value="madh">Madhubani</option>
+                      <option value="muza">Muzaffarpur</option>
+                      <option value="arrah">Arrah</option>
+                      <option value="purn">Purnia</option>
+                      <option value="dar">Darbhanga</option>
+                    </optgroup>
+                  </select>
                   <div
                     class="absolute bottom-0 left-0 w-full h-px bg-black rounded-b-lg"
                   ></div>
@@ -1088,5 +1210,29 @@
         </div>
       </div>
     </div>
+    <script>
+      fetch("sidebar.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("sidebar").innerHTML = data;
+        })
+        .catch((error) => console.error("Error loading sidebar:", error));
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 text-black py-5 mt-10 w-full lg:pl-64">
+      <div class="w-full mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+          <p class="text-sm lg:mb-0 mb-4">
+            Privacy Policy . Terms of Service . © 2024-2026 One.HR. All rights
+            reserved.
+          </p>
+          <div class="flex items-center">
+            <img src="img/logo.svg" alt="Logo" class="w-9 h-6 mr-2" />
+            <span class="text-black font-semibold text-lg">ONE.HR</span>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
