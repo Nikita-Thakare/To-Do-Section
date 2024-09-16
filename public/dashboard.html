@@ -53,13 +53,9 @@
   </head>
 
   <body class="flex flex-col min-h-screen">
-    <div class="flex flex-col lg:flex-row flex-1">
-      <!-- Sidebar -->
-      <div
-        id="sidebar"
-        class="lg:w-64 w-full bg-gray-200 text-white flex flex-col p-4 h-screen overflow-y-auto lg:sticky lg:top-0 transition-transform transform -translate-x-full lg:translate-x-0"
-      ></div>
-    </div>
+    <!-- Sidebar -->
+    <div id="sidebar"></div>
+    <div class="flex flex-col lg:flex-row flex-1"></div>
 
     <div id="main-content" class="flex flex-col flex-1">
       <!-- Fixed top bar with search functionality -->
@@ -67,9 +63,10 @@
         <div
           class="relative flex items-center rounded-full border lg:ml-40 sm:ml-10 border-gray-300 bg-gray-100 px-4 py-2 max-w-md w-full"
         >
-          <img src="img/search.svg" alt="Search" class="w-5 h-5 mr-2" />
-          <p class="text-black text-sm">Search...</p>
+          <img src="img/search.svg" alt="Search" class="w-5 h-5" />
+          <p class="text-gray-500 text-lg flex-grow text-right">Search...</p>
         </div>
+
         <div class="flex items-center space-x-4 lg:mr-20 sm:mr-10">
           <!-- Settings Icon with Notification -->
           <div
@@ -411,20 +408,10 @@
       </div>
     </div>
 
-    <!-- JavaScript for Toggle Menu -->
-
-    <script>
-      // Fetch and load sidebar content
-      fetch("sidebar.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("sidebar").innerHTML = data;
-        })
-        .catch((error) => console.error("Error loading sidebar:", error));
-    </script>
+    <script src="sidebar.js"></script>
 
     <!-- Footer -->
-    <footer class="bg-gray-200 text-black py-5 mt-10 w-full lg:pl-64">
+    <footer class="bg-gray-200 text-black py-5 mt-40 w-full lg:pl-64">
       <div class="w-full mx-auto px-4">
         <div class="flex flex-col lg:flex-row items-center justify-between">
           <p class="text-sm lg:mb-0 mb-4">

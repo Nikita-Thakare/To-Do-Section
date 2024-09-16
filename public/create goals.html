@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HRMS</title>
+    <!-- Include Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Sidebar Styles */
+      #sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 250px;
+        background-color: #e5e7eb;
+        z-index: 10;
+        transition: transform 0.3s ease;
+      }
+
+      /* Main Content Styles */
+      #main-content {
+        margin-left: 250px;
+        padding: 20px;
+        transition: margin-left 0.3s ease;
+      }
+
+      /* Mobile view adjustments */
+      @media (max-width: 768px) {
+        #sidebar {
+          width: 100%;
+          height: auto;
+          position: fixed;
+          transform: translateX(-100%);
+          /* Ensure it stays on top */
+          z-index: 20;
+        }
+
+        #main-content {
+          margin-left: 0;
+          padding: 10px;
+        }
+
+        #sidebar.open {
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </head>
+
+  <body class="flex flex-col items-center">
+    <!-- Fixed top bar with search functionality -->
+    <div class="flex flex-col lg:flex-row flex-1">
+      <!-- Sidebar -->
+      <div id="sidebar"></div>
+    </div>
+
+    <div class="flex items-center justify-between w-full px-4 mt-10">
+      <div
+        class="relative flex items-center rounded-full border lg:ml-96 sm:ml-10 border-gray-300 bg-gray-100 px-4 py-2 max-w-md w-full"
+      >
+        <img src="img/search.svg" alt="Search" class="w-5 h-5" />
+        <p class="text-gray-500 text-lg flex-grow text-right">Search...</p>
+      </div>
+
+      <div class="flex items-center space-x-4 lg:mr-20 sm:mr-10">
+        <!-- Settings Icon with Notification -->
+        <div
+          class="relative bg-gray-200 p-2 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img src="img/setting.svg" alt="Settings" class="w-5 h-5" />
+          <img
+            src="img/circle.svg"
+            alt="Notification"
+            class="absolute top-4 right-4 w-2 h-2"
+          />
+        </div>
+
+        <!-- Bell Icon -->
+        <div
+          class="relative bg-gray-200 p-2 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img src="img/bell.svg" alt="Bell" class="w-5 h-5" />
+        </div>
+
+        <!-- Profile Image -->
+        <div
+          class="relative bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img
+            src="img/girl.svg"
+            alt="Profile"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Small rectangles for navigation -->
+    <div
+      class="flex flex-wrap justify-center mt-14 px-4 space-x-4 lg:space-x-10"
+    >
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Personal
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Time off
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Assets
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Training
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-green-200 text-gray-900 flex items-center justify-center"
+      >
+        Goals
+      </div>
+    </div>
+
+    <div
+      class="mt-10 lg:ml-44 sm:ml-20 w-full max-w-4xl bg-white border border-gray-300 rounded-lg p-6 flex flex-col"
+    >
+      <!-- Smaller rectangle with image -->
+      <div class="flex flex-col lg:flex-row items-start">
+        <!-- Image block -->
+        <div class="relative w-32 h-32 ml-5 lg:mr-10 lg:mb-0 mb-4">
+          <img
+            src="img/girl.svg"
+            alt="Profile Image"
+            class="w-full h-full object-cover rounded-tl-lg"
+          />
+
+          <!-- Text block -->
+          <div class="flex flex-col">
+            <div class="absolute top-0 left-44 w-[145px] h-[20px]">
+              <h2
+                class="lg:text-3xl sm:text-2xl font-semibold text-gray-800 whitespace-nowrap"
+              >
+                Jane Joyey.
+              </h2>
+            </div>
+            <div class="absolute top-10 left-44 flex flex-col text-gray-500">
+              <div class="flex items-center mb-2">
+                <img src="img/FT.svg" alt="Full-Time" class="w-4 h-4 mr-2" />
+                <span class="whitespace-nowrap">Full-Time</span>
+              </div>
+              <div class="flex items-center mb-2">
+                <img
+                  src="img/people.svg"
+                  alt="Marketing"
+                  class="w-4 h-4 mr-2"
+                />
+                <span class="whitespace-nowrap">Marketing</span>
+              </div>
+              <div class="flex items-center">
+                <img
+                  src="img/location.svg"
+                  alt="Location"
+                  class="w-4 h-4 mr-2"
+                />
+                <span class="whitespace-nowrap">Pune</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fles flex-col sm:flex-row">
+          <div
+            class="flex items-center lg:mt-10 sm:mt-0 lg:ml-36 sm:ml-28 text-gray-500"
+          >
+            <img src="img/sms.svg" alt="Email" class="w-4 h-4 mr-2" />
+            jane.joyey@cloudprism.in
+          </div>
+          <div class="flex items-center mt-2 lg:ml-36 sm:ml-28 text-gray-500">
+            <img src="img/call-slash.svg" alt="Phone" class="w-4 h-4 mr-2" />
+            xx xxxx xxxx xx
+          </div>
+        </div>
+        <div class="flex mt-9 ml-4">
+          <div class="w-[1px] h-[65px] border-l border-gray-300"></div>
+          <div class="ml-5">
+            <p class="text-gray-800 font-semibold">Reports to</p>
+            <div class="flex gap-12 mt-2">
+              <div class="flex items-center">
+                <img
+                  src="img/Subtract.svg"
+                  alt="Reports to Icon"
+                  class="w-5 h-5 mr-2"
+                />
+                <p class="text-gray-500">Daisy Jane</p>
+              </div>
+              <div class="bg-white border border-gray-300 rounded-lg p-1">
+                <p class="text-gray-500 text-sm">Request change</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Goals Section -->
+    <div class="relative w-full max-w-2xl ml-5">
+      <div class="flex justify-start mt-8">
+        <div
+          class="flex items-start custom-font text-[13px] lg:text-[16px] text-gray-800 font-semibold leading-[20px] lg:leading-[24px]"
+        >
+          <img
+            src="img/star.svg"
+            alt="img"
+            class="w-[24px] h-[24px] lg:w-[64px] lg:h-[36px] mb-2"
+          />
+          <span class="ml-2">Goals</span>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="mt-2 h-12 lg:ml-44 sm:ml-20 w-full max-w-4xl bg-gray-200 border-gray-300 rounded-sm flex flex-col items-center"
+    >
+      <!-- Centered Text -->
+      <div class="text-black text-lg font-sem mt-2">Create New Goal</div>
+    </div>
+    <div class="flex flex-col mt-10 lg:ml-96 sm:ml-0">
+      <div class="grid grid-cols-1 gap-3 md:grid-cols-1 lg:grid-cols-2">
+        <!-- Goal Objective -->
+        <div class="flex flex-col w-full lg:ml-40 sm:ml-0">
+          <!-- Container for Goal Objective and Due Date -->
+          <div class="flex flex-col lg:flex-row gap-4">
+            <!-- Goal Objective -->
+            <div class="flex flex-col lg:w-96 w-full">
+              <div class="relative mb-2">Goal Objective*</div>
+              <div
+                class="relative border border-gray-300 flex items-center"
+                style="border-radius: 4px"
+              >
+                <input
+                  type="text"
+                  placeholder="Write your Goal"
+                  class="w-full h-10 px-2 rounded-sm"
+                  style="border-radius: 4px"
+                />
+                <!-- Black underline inside the container -->
+                <div
+                  class="absolute bottom-0 left-0 w-full h-px bg-black"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Due Date -->
+            <div class="flex flex-col lg:w-48 w-full">
+              <div class="relative mb-2">Due Date*</div>
+              <div
+                class="relative border border-gray-300 flex items-center"
+                style="border-radius: 4px"
+              >
+                <input
+                  type="text"
+                  placeholder="dd/mm/yyyy"
+                  class="w-full h-10 px-2"
+                  style="border-radius: 4px"
+                />
+                <div
+                  class="absolute bottom-0 left-0 w-full h-px bg-black"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="flex flex-col w-full mt-2">
+            <div class="relative mb-2">Description*</div>
+            <div
+              class="relative border border-gray-300 flex items-start w-full h-20"
+              style="border-radius: 4px"
+            >
+              <input
+                type="text"
+                placeholder="Provide description of Goal"
+                class="w-full h-full p-2 border-none rounded-sm"
+                style="border-radius: 4px"
+              />
+
+              <div class="absolute bottom-0 left-0 w-full h-px bg-black"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="relative w-24 h-8 bg-green-600 border border-gray-300 rounded-lg flex items-center mb-2 lg:mb-0 mt-5 lg:ml-96 sm:ml-0"
+      >
+        <img
+          src="img/Ellipse 14 .svg"
+          alt="circle"
+          class="w-13 h-13 mr-5 absolute top-2 left-3.5"
+        />
+        <img
+          src="img/Vector 2.svg"
+          alt="line"
+          class="w-2 h-2 absolute top-2.5 left-4"
+        />
+        <img
+          src="img/Vector 1.svg"
+          alt="line"
+          class="w-2 h-2 absolute top-2.5 left-4"
+        />
+        <div class="absolute top left-7 p-1">Submit</div>
+      </div>
+    </div>
+
+    <script>
+      function toggleDropdown() {
+        const dropdown = document.getElementById("dropdownMenu");
+        dropdown.classList.toggle("hidden");
+      }
+
+      function updateStatus(status) {
+        const statusText = document.getElementById("statusText");
+        statusText.textContent = status;
+
+        // Hide the dropdown after selection
+        toggleDropdown();
+      }
+      function updateProgressBar() {
+        const input = document.getElementById("percentageInput");
+        const progressBar = document.getElementById("progressBar");
+      }
+    </script>
+
+    <script src="sidebar.js"></script>
+
+    <!-- Footer -->
+    <footer class="bg-gray-200 text-black py-5 mt-96 w-full lg:pl-64">
+      <div class="w-full mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+          <p class="text-sm lg:mb-0 mb-4">
+            Privacy Policy . Terms of Service . © 2024-2026 One.HR. All rights
+            reserved.
+          </p>
+          <div class="flex items-center">
+            <img src="img/logo.svg" alt="Logo" class="w-9 h-6 mr-2" />
+            <span class="text-black font-semibold text-lg">ONE.HR</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HRMS</title>
+    <!-- Include Tailwind CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Sidebar Styles */
+      #sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        width: 250px;
+        background-color: #e5e7eb;
+        z-index: 10;
+        transition: transform 0.3s ease;
+      }
+
+      /* Main Content Styles */
+      #main-content {
+        margin-left: 250px;
+        padding: 20px;
+        transition: margin-left 0.3s ease;
+      }
+
+      /* Mobile view adjustments */
+      @media (max-width: 768px) {
+        #sidebar {
+          width: 100%;
+          height: auto;
+          position: fixed;
+          transform: translateX(-100%);
+          /* Ensure it stays on top */
+          z-index: 20;
+        }
+
+        #main-content {
+          margin-left: 0;
+          padding: 10px;
+        }
+
+        #sidebar.open {
+          transform: translateX(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="flex flex-col items-center">
+    <!-- Fixed top bar with search functionality -->
+    <div class="flex flex-col lg:flex-row flex-1">
+      <!-- Sidebar -->
+      <div id="sidebar"></div>
+    </div>
+
+    <div class="flex items-center justify-between w-full px-4 mt-10">
+      <div
+        class="relative flex items-center rounded-full border lg:ml-96 sm:ml-10 border-gray-300 bg-gray-100 px-4 py-2 max-w-md w-full"
+      >
+        <img src="img/search.svg" alt="Search" class="w-5 h-5" />
+        <p class="text-gray-500 text-lg flex-grow text-right">Search...</p>
+      </div>
+
+      <div class="flex items-center space-x-4 lg:mr-20 sm:mr-10">
+        <!-- Settings Icon with Notification -->
+        <div
+          class="relative bg-gray-200 p-2 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img src="img/setting.svg" alt="Settings" class="w-5 h-5" />
+          <img
+            src="img/circle.svg"
+            alt="Notification"
+            class="absolute top-4 right-4 w-2 h-2"
+          />
+        </div>
+        <!-- Bell Icon -->
+        <div
+          class="relative bg-gray-200 p-2 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img src="img/bell.svg" alt="Bell" class="w-5 h-5" />
+        </div>
+
+        <!-- Profile Image -->
+        <div
+          class="relative bg-gray-200 rounded-full w-10 h-10 flex items-center justify-center overflow-hidden"
+        >
+          <img
+            src="img/girl.svg"
+            alt="Profile"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Small rectangles for navigation -->
+    <div
+      class="flex flex-wrap justify-center mt-10 px-4 space-x-4 lg:space-x-7"
+    >
+      <div
+        onclick="handlePersonalClick()"
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4 cursor-pointer hover:bg-green-300"
+        id="personalButton"
+      >
+        Personal
+      </div>
+
+      <script>
+        function handlePersonalClick() {
+          // Store a flag in local storage to indicate the "Personal" button was clicked
+          localStorage.setItem("personalClicked", "true");
+          // Redirect to details.html
+          window.location.href = "details.html";
+        }
+      </script>
+
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+      >
+        Time off
+      </div>
+      <div
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4 cursor-pointer"
+        id="assetsButton"
+      >
+        Assets
+      </div>
+
+      <script>
+        // Check if the "Assets" button was clicked
+        if (localStorage.getItem("assetsClicked") === "true") {
+          // Apply the green background color to the "Assets" button
+          document
+            .getElementById("assetsButton")
+            .classList.remove("bg-gray-100");
+          document.getElementById("assetsButton").classList.add("bg-green-300");
+        }
+      </script>
+
+      <div
+        onclick="window.location.href='goals.html';"
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4 cursor-pointer"
+      >
+        Document
+      </div>
+
+      <div
+        onclick="handlePersonalClick()"
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center cursor-pointer hover:bg-green-300"
+        id="personalButton"
+      >
+        To-Do
+      </div>
+      <script>
+        function handlePersonalClick() {
+          localStorage.setItem("personalClicked", "true");
+
+          window.location.href = "to-do.html";
+        }
+      </script>
+    </div>
+    <div
+      class="mt-10 lg:ml-48 sm:ml-20 w-full max-w-4xl bg-white border border-gray-300 rounded-lg p-6 flex flex-col"
+    >
+      <!-- Smaller rectangle with image -->
+      <div class="flex flex-col lg:flex-row items-start">
+        <!-- Image block -->
+        <div class="relative w-32 h-32 ml-5 lg:mr-10 lg:mb-0 mb-4">
+          <img
+            src="img/girl.svg"
+            alt="Profile Image"
+            class="w-full h-full object-cover rounded-tl-lg"
+          />
+
+          <!-- Text block -->
+          <div class="flex flex-col">
+            <div class="absolute top-0 left-44 w-[145px] h-[20px]">
+              <h2
+                class="lg:text-3xl sm:text-2xl font-semibold text-gray-800 whitespace-nowrap"
+              >
+                Jane Joyey.
+              </h2>
+            </div>
+            <div class="absolute top-10 left-44 flex flex-col text-gray-500">
+              <div class="flex items-center mb-2">
+                <img src="img/FT.svg" alt="Full-Time" class="w-4 h-4 mr-2" />
+                <span class="whitespace-nowrap">Full-Time</span>
+              </div>
+              <div class="flex items-center mb-2">
+                <img
+                  src="img/people.svg"
+                  alt="Marketing"
+                  class="w-4 h-4 mr-2"
+                />
+                <span class="whitespace-nowrap">Marketing</span>
+              </div>
+              <div class="flex items-center">
+                <img
+                  src="img/location.svg"
+                  alt="Location"
+                  class="w-4 h-4 mr-2"
+                />
+                <span class="whitespace-nowrap">Pune</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="fles flex-col sm:flex-row">
+          <div
+            class="flex items-center lg:mt-10 sm:mt-0 lg:ml-36 sm:ml-28 text-gray-500"
+          >
+            <img src="img/sms.svg" alt="Email" class="w-4 h-4 mr-2" />
+            jane.joyey@cloudprism.in
+          </div>
+          <div class="flex items-center mt-2 lg:ml-36 sm:ml-28 text-gray-500">
+            <img src="img/call-slash.svg" alt="Phone" class="w-4 h-4 mr-2" />
+            xx xxxx xxxx xx
+          </div>
+        </div>
+        <div class="flex mt-9 ml-4">
+          <div class="w-[1px] h-[65px] border-l border-gray-300"></div>
+          <div class="ml-5">
+            <p class="text-gray-800 font-semibold">Reports to</p>
+            <div class="flex gap-12 mt-2">
+              <div class="flex items-center">
+                <img
+                  src="img/Subtract.svg"
+                  alt="Reports to Icon"
+                  class="w-5 h-5 mr-2"
+                />
+                <p class="text-gray-500">Daisy Jane</p>
+              </div>
+              <div class="bg-white border border-gray-300 rounded-lg p-1">
+                <p class="text-gray-500 text-sm">Request change</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Assets section -->
+
+    <div class="relative w-full max-w-2xl">
+      <!-- Flex container to align "Assets" and "New Goal" in a row -->
+      <div class="flex flex-col lg:flex-row items-start lg:items-center mt-8">
+        <!-- Title Section ("Assets") -->
+        <div
+          class="flex items-start custom-font text-[13px] lg:text-[16px] text-gray-800 font-semibold leading-[20px] lg:leading-[24px] mr-4 lg:mr-8"
+        >
+          <img
+            src="img/monitor-mobbile.svg"
+            alt="img"
+            class="w-[48px] h-[28px] lg:w-[64px] lg:h-[36px] mb-2"
+          />
+          <span class="ml-2">Assets</span>
+        </div>
+
+        <!-- New Goal Section -->
+        <a
+          href="goals form.html"
+          class="relative w-full lg:w-36 h-8 bg-white border border-gray-300 rounded-lg flex items-center no-underline hover:no-underline"
+        >
+          <!-- Decorative Elements -->
+          <img
+            src="img/Ellipse 14 .svg"
+            alt="circle"
+            class="w-13 h-13 mr-5 absolute top-2 left-3.5"
+          />
+          <img
+            src="img/Vector 2.svg"
+            alt="line"
+            class="w-2 h-2 absolute top-2.5 left-4"
+          />
+          <img
+            src="img/Vector 1.svg"
+            alt="line"
+            class="w-2 h-2 absolute top-2.5 left-4"
+          />
+          <!-- Text Content -->
+          <div class="absolute left-7 p-1 whitespace-nowrap">
+            Request assets
+          </div>
+        </a>
+      </div>
+    </div>
+    <div
+      class="mt-5 h-auto lg:ml-48 sm:ml-20 w-full max-w-4xl bg-white border border-gray-300 rounded-lg flex flex-col"
+    >
+      <!-- Header Section -->
+      <div
+        class="grid grid-cols-3 gap-4 text-center font-semibold text-lg mt-5 mb-2 lg:grid-cols-6 lg:gap-4"
+      >
+        <div class="col-span-1">Category</div>
+        <div class="col-span-1">Description</div>
+        <div class="col-span-1">Serial no.</div>
+        <div class="hidden lg:block col-span-1 ml-5">Date assigned</div>
+        <div class="hidden lg:block col-span-1 ml-5">Status</div>
+        <div class="hidden lg:block col-span-1">Tickets</div>
+      </div>
+
+      <div class="border-t border-gray-300 w-full mt-2 mb-5 h-1"></div>
+
+      <!-- Content Section -->
+      <div class="grid grid-cols-3 gap-4 text-sm lg:grid-cols-6 lg:gap-4">
+        <!-- Category Content -->
+        <div class="flex flex-col ml-8">
+          <div class="mb-2">Mouse</div>
+          <div class="mb-2 mt-4">Mouse</div>
+          <div class="mb-2 ml-1 mt-4">SSD</div>
+          <div class="mb-2 mt-4">Keyboard</div>
+          <div class="mb-2 ml-1 mt-4">Laptop</div>
+          <div class="mb-2 ml-1 mt-4">Laptop</div>
+        </div>
+
+        <!-- Description Content -->
+        <div class="flex flex-col ml-5">
+          <div class="mb-2">Macbook 16”</div>
+          <div class="mb-2 mt-4">Macbook 16”</div>
+          <div class="mb-2 mt-4">Macbook 16”</div>
+          <div class="mb-2 mt-4">Macbook 16”</div>
+          <div class="mb-2 mt-4">Macbook 16”</div>
+          <div class="mb-2 mt-4">Macbook 16”</div>
+        </div>
+
+        <!-- Serial No. Content -->
+        <div class="flex flex-col ml-2">
+          <div class="mb-2">#449238y7329hdb</div>
+          <div class="mb-2 mt-4">#449238y7329hdb</div>
+          <div class="mb-2 mt-4">#449238y7329hdb</div>
+          <div class="mb-2 mt-4">#449238y7329hdb</div>
+          <div class="mb-2 mt-4">#449238y7329hdb</div>
+          <div class="mb-2 mt-4">#449238y7329hdb</div>
+        </div>
+
+        <!-- Date Assigned Content (Visible on larger screens) -->
+        <div class="hidden lg:flex flex-col ml-12">
+          <div class="mb-2">24 aug 2023</div>
+          <div class="mb-2 mt-4">24 aug 2023</div>
+          <div class="mb-2 mt-4">24 aug 2023</div>
+          <div class="mb-2 mt-4">24 aug 2023</div>
+          <div class="mb-2 mt-4">24 aug 2023</div>
+          <div class="mb-2 mt-4">24 aug 2023</div>
+        </div>
+
+        <!-- Status Content (Visible on larger screens) -->
+        <div class="hidden lg:flex flex-col ml-8">
+          <div class="flex items-center mb-2">
+            <!-- Circle with background color -->
+            <div class="w-2.5 h-2.5 rounded-full bg-red-400 mr-2"></div>
+
+            <span>Not working</span>
+          </div>
+
+          <div class="flex items-center mb-2 mt-4 ml-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500 mr-2"></div>
+
+            <span> working</span>
+          </div>
+          <div class="flex items-center mb-2 mt-4 ml-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500 mr-2"></div>
+
+            <span> working</span>
+          </div>
+          <div class="flex items-center mb-2 mt-4 ml-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500 mr-2"></div>
+
+            <span> working</span>
+          </div>
+          <div class="flex items-center mb-2 mt-4 ml-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500 mr-2"></div>
+
+            <span> working</span>
+          </div>
+          <div class="flex items-center mb-2 mt-4 ml-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500 mr-2"></div>
+
+            <span> working</span>
+          </div>
+        </div>
+
+        <!-- Tickets Content (Visible on larger screens) -->
+        <div class="hidden lg:flex flex-col ml-5">
+          <div class="mb-2">
+            <div
+              class="w-24 h-6 bg-white border border-gray-300 text-sm rounded-md flex items-center justify-center"
+            >
+              Check ticket
+            </div>
+          </div>
+
+          <div class="mb-2 mt-3">
+            <div
+              class="w-24 h-6 bg-white border border-gray-300 text-sm rounded-md flex items-center justify-center"
+            >
+              Raise ticket
+            </div>
+          </div>
+          <div class="mb-2 mt-3">
+            <div
+              class="w-24 h-6 bg-white border border-gray-300 text-sm rounded-md flex items-center justify-center"
+            >
+              Raise ticket
+            </div>
+          </div>
+          <div class="mb-2 mt-3">
+            <div
+              class="w-24 h-6 bg-white border border-gray-300 text-sm rounded-md flex items-center justify-center"
+            >
+              Raise ticket
+            </div>
+          </div>
+          <div class="mb-2 mt-3">
+            <div
+              class="w-24 h-6 bg-white border border-gray-300 text-sm rounded-md flex items-center justify-center"
+            >
+              Raise ticket
+            </div>
+          </div>
+          <div class="mb-2 mt-3">
+            <div
+              class="w-24 h-6 bg-white border border-gray-300 text-sm rounded-md flex items-center justify-center"
+            >
+              Raise ticket
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Additional Header Section (Mobile view only) -->
+      <div
+        class="grid grid-cols-3 gap-4 text-center font-semibold text-lg mt-5 mb-2 lg:hidden"
+      >
+        <div class="col-span-1">Date assigned</div>
+        <div class="col-span-1">Status</div>
+        <div class="col-span-1">Tickets</div>
+      </div>
+
+      <div
+        class="border-t border-gray-300 w-full mt-2 mb-5 h-1 lg:hidden"
+      ></div>
+
+      <!-- Additional Content Section (Mobile view only) -->
+      <div class="grid grid-cols-3 gap-4 text-sm lg:hidden">
+        <!-- Date assigned -->
+        <div class="flex flex-col">
+          <div class="mb-2 ml-2">24 aug 2023</div>
+          <div class="mb-2 mt-4 ml-2">24 aug 2023</div>
+          <div class="mb-2 mt-4 ml-2">24 aug 2023</div>
+          <div class="mb-2 mt-4 ml-2">24 aug 2023</div>
+          <div class="mb-2 mt-4 ml-2">24 aug 2023</div>
+          <div class="mb-2 mt-4 ml-2">24 aug 2023</div>
+        </div>
+
+        <!-- status -->
+        <div class="flex flex-col">
+          <div class="flex items-center">
+            <div class="w-2.5 h-2.5 rounded-full bg-red-400 mr-2"></div>
+            <span>Not working</span>
+          </div>
+
+          <div class="flex items-center mb-2 mt-5 ml-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500 mr-2"></div>
+
+            <span> working</span>
+          </div>
+          <div class="flex items-center mb-2 mt-4 ml-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500 mr-2"></div>
+
+            <span> working</span>
+          </div>
+          <div class="flex items-center mb-2 mt-4 ml-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500 mr-2"></div>
+
+            <span> working</span>
+          </div>
+          <div class="flex items-center mb-2 mt-4 ml-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500 mr-2"></div>
+
+            <span> working</span>
+          </div>
+          <div class="flex items-center mb-2 mt-5 ml-2">
+            <div class="w-2.5 h-2.5 rounded-full bg-green-500 mr-2"></div>
+
+            <span> working</span>
+          </div>
+        </div>
+
+        <!-- tickets -->
+        <div class="flex flex-col">
+          <div class="mb-2 ml-2">
+            <div
+              class="w-24 h-6 bg-white border border-gray-300 text-sm rounded-md flex items-center justify-center"
+            >
+              Check ticket
+            </div>
+          </div>
+
+          <div class="mb-2 ml-2 mt-2">
+            <div
+              class="w-24 h-6 bg-white border border-gray-300 text-sm rounded-md flex items-center justify-center"
+            >
+              Raise ticket
+            </div>
+          </div>
+          <div class="mb-2 ml-2 mt-3">
+            <div
+              class="w-24 h-6 bg-white border border-gray-300 text-sm rounded-md flex items-center justify-center"
+            >
+              Raise ticket
+            </div>
+          </div>
+          <div class="mb-2 ml-2 mt-3">
+            <div
+              class="w-24 h-6 bg-white border border-gray-300 text-sm rounded-md flex items-center justify-center"
+            >
+              Raise ticket
+            </div>
+          </div>
+          <div class="mb-2 ml-2 mt-3">
+            <div
+              class="w-24 h-6 bg-white border border-gray-300 text-sm rounded-md flex items-center justify-center"
+            >
+              Raise ticket
+            </div>
+          </div>
+          <div class="mb-2 ml-2 mt-3">
+            <div
+              class="w-24 h-6 bg-white border border-gray-300 text-sm rounded-md flex items-center justify-center"
+            >
+              Raise ticket
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="relative w-full max-w-2xl">
+      <!-- Header Section -->
+      <div class="flex justify-start mt-8">
+        <div
+          class="flex items-start custom-font text-[13px] lg:text-[16px] text-gray-800 font-semibold leading-[20px] lg:leading-[24px]"
+        >
+          <img
+            src="img/monitor-mobbile.svg"
+            alt="img"
+            class="w-[48px] h-[28px] lg:w-[64px] lg:h-[36px] mb-2"
+          />
+          <span class="ml-2">Issue Status</span>
+        </div>
+      </div>
+    </div>
+    <div class="w-full max-w-4xl mx-auto mt-5 mr-32">
+      <div
+        class="flex flex-col lg:flex-row lg:space-x-8 lg:space-y-0 space-y-5"
+      >
+        <div
+          class="h-96 w-full bg-white border border-gray-300 rounded-lg flex flex-col lg:w-1/2"
+        >
+          <div class="grid grid-cols-6 gap-4 text-center text-sm lg:gap-2 mt-5">
+            <!-- Category Row -->
+            <div class="col-span-1 font-semibold ml-4">Category:</div>
+            <div class="col-span-2 text-gray-500 ml-5 lg:ml-0">Laptop</div>
+            <div class="col-span-1 font-semibold ml-10">Date:</div>
+            <div class="col-span-2 text-gray-500 whitespace-nowrap">
+              13 May 2024
+            </div>
+          </div>
+
+          <div class="grid grid-cols-6 gap-4 text-center text-sm lg:gap-4 mt-5">
+            <!-- Description Row -->
+            <div class="col-span-1 font-semibold ml-4">Description:</div>
+            <div class="col-span-2 text-gray-500 ml-7 lg:ml-7">Macbook 16”</div>
+
+            <!-- Status Row -->
+            <div class="col-span-1 font-semibold ml-7">Status:</div>
+            <div class="col-span-2 flex items-center ml-3">
+              <div class="w-2.5 h-2.5 rounded-full bg-red-400 mr-2"></div>
+              <span>Not working</span>
+            </div>
+
+            <!-- Serial No Row -->
+            <div class="col-span-1 font-semibold ml-4 whitespace-nowrap">
+              Serial No.:
+            </div>
+            <div class="col-span-2 text-gray-500 ml-7 lg:ml-10">
+              #449238y7329hdb
+            </div>
+          </div>
+
+          <div class="grid grid-cols-4 gap-4 text-center text-sm lg:gap-4 mt-5">
+            <!-- Date Assigned Row -->
+            <div class="col-span-1 font-semibold ml-4 whitespace-nowrap">
+              Date Assigned:
+            </div>
+
+            <div class="col-span-1 text-gray-500">2024-09-15</div>
+          </div>
+
+          <div
+            class="grid grid-cols-3 gap-4 text-center text-sm lg:grid-cols-6 lg:gap-4 mt-5"
+          >
+            <!-- Issue Raised Description Row -->
+            <div class="col-span-1 font-semibold ml-4 whitespace-nowrap">
+              Issue Raised Description
+            </div>
+          </div>
+
+          <!-- Rectangle with Fixed Text -->
+          <div
+            class="relative mt-2 mx-4 h-20 border border-gray-300 rounded-md"
+          >
+            <p
+              class="text-gray-500 text-xs leading-normal lg:p-2 sm:p-1 whitespace-nowrap"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod<br />
+              tempor incididunt ut labore et dolore magna aliqua.U
+            </p>
+
+            <!-- Thin Underline -->
+            <div class="absolute bottom-0 left-0 w-full h-px bg-black"></div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 text-sm mt-5">
+            <!-- Ticket Status and Under Review -->
+            <div class="col-span-1">
+              <div class="font-semibold ml-4 whitespace-nowrap">
+                Ticket Status
+              </div>
+              <div
+                class="relative mt-2 mx-4 h-8 w-56 border border-gray-300 rounded-md"
+              >
+                <p
+                  class="text-black text-sm font-semibold leading-normal p-1 whitespace-nowrap"
+                >
+                  Under Review
+                </p>
+              </div>
+            </div>
+
+            <!-- Lead Approval and Not Approved -->
+            <div class="col-span-1">
+              <div class="font-semibold whitespace-nowrap ml-20 mt-2">
+                Lead Approval
+              </div>
+              <div class="flex items-center mt-2 ml-16">
+                <div class="w-2.5 h-2.5 rounded-full bg-red-400 mr-2"></div>
+                <span class="text-sm">Not approved</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second layout -->
+
+        <div
+          class="h-96 w-full bg-white border border-gray-300 rounded-lg flex flex-col lg:w-1/2"
+        >
+          <div class="grid grid-cols-6 gap-4 text-center text-sm lg:gap-2 mt-5">
+            <!-- Category Row -->
+            <div class="col-span-1 font-semibold ml-4">Category:</div>
+            <div class="col-span-2 text-gray-500 ml-5 lg:ml-0">Laptop</div>
+            <div class="col-span-1 font-semibold ml-10">Date:</div>
+            <div class="col-span-2 text-gray-500 whitespace-nowrap">
+              13 May 2024
+            </div>
+          </div>
+
+          <div class="grid grid-cols-6 gap-4 text-center text-sm lg:gap-4 mt-5">
+            <!-- Description Row -->
+            <div class="col-span-1 font-semibold ml-4">Description:</div>
+            <div class="col-span-2 text-gray-500 ml-7 lg:ml-7">Macbook 16”</div>
+
+            <!-- Status Row -->
+            <div class="col-span-1 font-semibold ml-7">Status:</div>
+            <div class="col-span-2 flex items-center ml-3">
+              <div class="w-2.5 h-2.5 rounded-full bg-red-400 mr-2"></div>
+              <span>Not working</span>
+            </div>
+
+            <!-- Serial No Row -->
+            <div class="col-span-1 font-semibold ml-4 whitespace-nowrap">
+              Serial No.:
+            </div>
+            <div class="col-span-2 text-gray-500 ml-7 lg:ml-10">
+              #449238y7329hdb
+            </div>
+          </div>
+
+          <div class="grid grid-cols-4 gap-4 text-center text-sm lg:gap-4 mt-5">
+            <!-- Date Assigned Row -->
+            <div class="col-span-1 font-semibold ml-4 whitespace-nowrap">
+              Date Assigned:
+            </div>
+
+            <div class="col-span-1 text-gray-500">2024-09-15</div>
+          </div>
+
+          <div
+            class="grid grid-cols-3 gap-4 text-center text-sm lg:grid-cols-6 lg:gap-4 mt-5"
+          >
+            <!-- Issue Raised Description Row -->
+            <div class="col-span-1 font-semibold ml-4 whitespace-nowrap">
+              Issue Raised Description
+            </div>
+          </div>
+
+          <!-- Rectangle with Fixed Text -->
+          <div
+            class="relative mt-2 mx-4 h-20 border border-gray-300 rounded-md"
+          >
+            <p
+              class="text-gray-500 text-xs leading-normal lg:p-2 sm:p-1 whitespace-nowrap"
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod<br />
+              tempor incididunt ut labore et dolore magna aliqua.U
+            </p>
+
+            <!-- Thin Underline -->
+            <div class="absolute bottom-0 left-0 w-full h-px bg-black"></div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 text-sm mt-5">
+            <!-- Ticket Status and Under Review -->
+            <div class="col-span-1">
+              <div class="font-semibold ml-4 whitespace-nowrap">
+                Ticket Status
+              </div>
+              <div
+                class="relative mt-2 mx-4 h-8 w-56 border border-gray-300 rounded-md"
+              >
+                <p
+                  class="text-black text-sm font-semibold leading-normal p-1 whitespace-nowrap"
+                >
+                  Solved
+                </p>
+              </div>
+            </div>
+
+            <!-- Lead Approval and Not Approved -->
+            <div class="col-span-1">
+              <div class="font-semibold whitespace-nowrap ml-20 mt-2">
+                Lead Approval
+              </div>
+              <div class="flex items-center mt-2 ml-16">
+                <div class="w-2.5 h-2.5 rounded-full bg-green-400 mr-2"></div>
+                <span class="text-sm">Approved</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="sidebar.js"></script>
+    <!-- Footer -->
+    <footer class="bg-gray-200 text-black py-5 mt-28 w-full lg:pl-64">
+      <div class="w-full mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+          <p class="text-sm lg:mb-0 mb-4">
+            Privacy Policy . Terms of Service . © 2024-2026 One.HR. All rights
+            reserved.
+          </p>
+          <div class="flex items-center">
+            <img src="img/logo.svg" alt="Logo" class="w-9 h-6 mr-2" />
+            <span class="text-black font-semibold text-lg">ONE.HR</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

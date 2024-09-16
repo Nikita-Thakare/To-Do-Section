@@ -55,19 +55,17 @@
     <!-- Fixed top bar with search functionality -->
     <div class="flex flex-col lg:flex-row flex-1">
       <!-- Sidebar -->
-      <div
-        id="sidebar"
-        class="lg:w-64 w-full bg-gray-200 text-white flex flex-col p-4 h-screen overflow-y-auto lg:sticky lg:top-0 transition-transform transform -translate-x-full lg:translate-x-0"
-      ></div>
+      <div id="sidebar"></div>
     </div>
 
     <div class="flex items-center justify-between w-full px-4 mt-10">
       <div
         class="relative flex items-center rounded-full border lg:ml-96 sm:ml-10 border-gray-300 bg-gray-100 px-4 py-2 max-w-md w-full"
       >
-        <img src="img/search.svg" alt="Search" class="w-5 h-5 mr-2" />
-        <p class="text-black text-sm">Search...</p>
+        <img src="img/search.svg" alt="Search" class="w-5 h-5" />
+        <p class="text-gray-500 text-lg flex-grow text-right">Search...</p>
       </div>
+
       <div class="flex items-center space-x-4 lg:mr-20 sm:mr-10">
         <!-- Settings Icon with Notification -->
         <div
@@ -106,10 +104,22 @@
       class="flex flex-wrap justify-center mt-10 px-4 space-x-4 lg:space-x-7"
     >
       <div
-        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+        onclick="handlePersonalClick()"
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4 cursor-pointer hover:bg-green-300"
+        id="personalButton"
       >
         Personal
       </div>
+
+      <script>
+        function handlePersonalClick() {
+          // Store a flag in local storage to indicate the "Personal" button was clicked
+          localStorage.setItem("personalClicked", "true");
+          // Redirect to details.html
+          window.location.href = "details.html";
+        }
+      </script>
+
       <div
         class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
       >
@@ -120,16 +130,41 @@
       >
         Assets
       </div>
+
       <div
-        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4"
+        onclick="window.location.href='goals.html';"
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4 cursor-pointer"
       >
-        Training
+        Document
       </div>
+
       <div
-        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center"
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center mb-2 lg:mb-4 cursor-pointer"
+        id="todoButton"
       >
         To-Do
       </div>
+
+      <script>
+        // Check if the "To-Do" button was clicked
+        if (localStorage.getItem("todoClicked") === "true") {
+          // Apply the green background color to the "To-Do" button
+          document.getElementById("todoButton").classList.remove("bg-gray-100");
+          document.getElementById("todoButton").classList.add("bg-green-300");
+        }
+
+        // Event listener for "To-Do" button click
+        document
+          .getElementById("todoButton")
+          .addEventListener("click", function () {
+            // Apply the green background color when clicked
+            this.classList.remove("bg-gray-100");
+            this.classList.add("bg-green-300");
+
+            // Store the state in localStorage
+            localStorage.setItem("todoClicked", "true");
+          });
+      </script>
     </div>
 
     <div
@@ -215,18 +250,24 @@
 
     <!-- To-do section -->
 
-    <div
-      class="flex mt-5 custom-font text-[13px] text-gray-800 font-semibold leading-[20px]"
-    >
-      <img
-        src="img/monitor-mobbile.svg"
-        alt="img"
-        class="w-[48px] h-[28px] mr-2"
-      />
-      To-do
+    <div class="relative w-full max-w-2xl">
+      <div class="flex justify-start mt-8">
+        <div
+          class="flex items-start custom-font text-[13px] lg:text-[16px] text-gray-800 font-semibold leading-[20px] lg:leading-[24px]"
+        >
+          <img
+            src="img/monitor-mobbile.svg"
+            alt="img"
+            class="w-[48px] h-[28px] lg:w-[64px] lg:h-[36px] mb-2"
+          />
+          <span class="ml-2">To-do</span>
+        </div>
+      </div>
     </div>
 
-    <div class="flex flex-col lg:flex-row ml-40 w-full max-w-4xl p-6 gap-6">
+    <div
+      class="flex flex-col lg:flex-row lg:ml-40 sm:ml-0 w-full max-w-4xl p-6 gap-6"
+    >
       <!-- Column for tasks -->
       <div class="flex-1 bg-gray-100 border border-gray-300 rounded-xl p-4">
         <div class="relative">
@@ -394,14 +435,21 @@
         </div>
       </div>
     </div>
-    <script>
-      // Fetch and load sidebar content
-      fetch("sidebar.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("sidebar").innerHTML = data;
-        })
-        .catch((error) => console.error("Error loading sidebar:", error));
-    </script>
+    <script src="sidebar.js"></script>
+    <!-- Footer -->
+    <footer class="bg-gray-200 text-black py-5 mt-96 w-full lg:pl-64">
+      <div class="w-full mx-auto px-4">
+        <div class="flex flex-col lg:flex-row items-center justify-between">
+          <p class="text-sm lg:mb-0 mb-4">
+            Privacy Policy . Terms of Service . © 2024-2026 One.HR. All rights
+            reserved.
+          </p>
+          <div class="flex items-center">
+            <img src="img/logo.svg" alt="Logo" class="w-9 h-6 mr-2" />
+            <span class="text-black font-semibold text-lg">ONE.HR</span>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

@@ -55,19 +55,17 @@
     <!-- Fixed top bar with search functionality -->
     <div class="flex flex-col lg:flex-row flex-1">
       <!-- Sidebar -->
-      <div
-        id="sidebar"
-        class="lg:w-64 w-full bg-gray-200 text-white flex flex-col p-4 h-screen overflow-y-auto lg:sticky lg:top-0 transition-transform transform -translate-x-full lg:translate-x-0"
-      ></div>
+      <div id="sidebar"></div>
     </div>
 
     <div class="flex items-center justify-between w-full px-4 mt-10">
       <div
         class="relative flex items-center rounded-full border lg:ml-96 sm:ml-10 border-gray-300 bg-gray-100 px-4 py-2 max-w-md w-full"
       >
-        <img src="img/search.svg" alt="Search" class="w-5 h-5 mr-2" />
-        <p class="text-black text-sm">Search...</p>
+        <img src="img/search.svg" alt="Search" class="w-5 h-5" />
+        <p class="text-gray-500 text-lg flex-grow text-right">Search...</p>
       </div>
+
       <div class="flex items-center space-x-4 lg:mr-20 sm:mr-10">
         <!-- Settings Icon with Notification -->
         <div
@@ -126,9 +124,10 @@
         Training
       </div>
       <div
-        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-gray-100 text-gray-900 flex items-center justify-center"
+        onclick="window.location.href='goals page.html';"
+        class="w-24 h-6 rounded-full p-2 border border-gray-300 bg-green-300 text-gray-900 flex items-center justify-center cursor-pointer"
       >
-        To-Do
+        Goals
       </div>
     </div>
 
@@ -204,9 +203,6 @@
                 />
                 <p class="text-gray-500">Daisy Jane</p>
               </div>
-              <div class="bg-white border border-gray-300 rounded-lg p-1">
-                <p class="text-gray-500 text-sm">Request change</p>
-              </div>
             </div>
           </div>
         </div>
@@ -230,26 +226,27 @@
 
       <div class="flex flex-col lg:flex-row mt-5 items-center">
         <!-- New Goal Section -->
-        <div
-          class="relative w-full lg:w-1/3 h-8 bg-white border border-gray-300 rounded-lg flex items-center mb-2 lg:mb-0"
+        <a
+          href="create goals.html"
+          class="relative w-full lg:w-32 h-8 bg-white border border-gray-300 rounded-lg flex items-center mb-2 lg:mb-0 no-underline hover:no-underline"
         >
           <img
             src="img/Ellipse 14 .svg"
             alt="circle"
-            class="w-13 h-13 mr-5 absolute top-3 left-3.5"
+            class="w-13 h-13 mr-5 absolute top-2 left-3.5"
           />
           <img
             src="img/Vector 2.svg"
             alt="line"
-            class="w-2 h-2 absolute top-3.5 left-4"
+            class="w-2 h-2 absolute top-2.5 left-4"
           />
           <img
             src="img/Vector 1.svg"
             alt="line"
-            class="w-2 h-2 absolute top-3.5 left-4"
+            class="w-2 h-2 absolute top-2.5 left-4"
           />
-          <div class="absolute top left-10 p-1">New Goal</div>
-        </div>
+          <div class="absolute centre left-10 p-1">New Goal</div>
+        </a>
 
         <!-- Status Section (Centered) -->
         <div
@@ -337,7 +334,9 @@
       </div>
       <div class="flex mt-8 ml-5">
         <!-- 15% Text -->
-        <div class="text-black text-4xl font-semibold">15%</div>
+        <div id="percentageText" class="text-black text-4xl font-semibold">
+          15%
+        </div>
 
         <!-- COMPLETE Text -->
         <div class="text-black text-xs mt-6 font-serif ml-2">COMPLETE</div>
@@ -355,7 +354,7 @@
                 type="text"
                 maxlength="4"
                 class="w-12 text-black text-lg font-semibold ml-3 mt-1 outline-none text-right"
-                oninput="updateProgressBar()"
+                oninput="updateProgress()"
                 placeholder="0%"
               />
               <img src="img/pen.svg" alt="pen" class="w-5 h-5 ml-auto mr-3" />
@@ -379,25 +378,22 @@
       </div>
 
       <!-- Container for images and text -->
-      <div class="flex flex-col mt-20 ml-5 space-y-14">
+      <div class="flex flex-col mt-20 ml-5 space-y-14 pb-20">
         <div class="flex items-start">
           <img src="img/girl.svg" alt="img" class="w-12 h-12" />
-
           <div class="ml-4 flex flex-col">
             <div class="text-black text-lg font-semibold">Colin</div>
-
             <div class="text-black text-sm font-serif">
               Welcome [New Employee Name] to our team as [Job Title] in
               [Department]! Please give [him/her/them] a warm welcome!
             </div>
           </div>
         </div>
+
         <div class="flex items-start">
           <img src="img/daisy.svg" alt="img" class="w-12 h-12" />
-
           <div class="ml-4 flex flex-col">
             <div class="text-black text-lg font-semibold">Daisy</div>
-
             <div class="text-black text-sm font-serif">
               Important: [Policy Name] policy updated. Effective [Effective
               Date]. Check your email for details.
@@ -407,10 +403,8 @@
 
         <div class="flex items-start">
           <img src="img/mona.svg" alt="img" class="w-12 h-12" />
-
           <div class="ml-4 flex flex-col">
             <div class="text-black text-lg font-semibold">Mona</div>
-
             <div class="text-black text-sm font-serif">
               Mandatory staff meeting on [Date] at [Time]. Please attend to
               discuss important updates.
@@ -418,8 +412,9 @@
           </div>
         </div>
 
+        <!-- Add Comment Section -->
         <div
-          class="w-full h-16 border border-gray-200 bg-gray-200 overflow-hidden flex items-center justify-center"
+          class="w-full h-16 border border-gray-200 bg-gray-200 overflow-hidden rounded-b-lg flex items-center justify-center absolute bottom-0 inset-x-0"
         >
           <div
             class="relative w-40 h-8 bg-white border border-gray-300 rounded-lg flex items-center mb-2 lg:mb-0"
@@ -439,7 +434,7 @@
               alt="line"
               class="w-2 h-2 absolute top-3.5 left-4"
             />
-            <div class="absolute top left-10 p-1">Add Comment</div>
+            <div class="absolute top-0 left-10 p-1">Add Comment</div>
           </div>
         </div>
       </div>
@@ -476,21 +471,37 @@
         progressBar.style.width = percentage + "%";
       }
     </script>
+    <script src="sidebar.js"></script>
     <script>
-      // Fetch and load sidebar content
-      fetch("sidebar.html")
-        .then((response) => response.text())
-        .then((data) => {
-          document.getElementById("sidebar").innerHTML = data;
-        })
-        .catch((error) => console.error("Error loading sidebar:", error));
+      function updateProgress() {
+        // Get the input value
+        const input = document.getElementById("percentageInput");
+        const percentageText = document.getElementById("percentageText");
+        const progressBar = document.getElementById("progressBar");
+
+        // Parse the input value
+        let value = parseInt(input.value, 10);
+
+        // Ensure value is between 0 and 100
+        if (isNaN(value)) {
+          value = 0;
+        } else if (value < 0) {
+          value = 0;
+        } else if (value > 100) {
+          value = 100;
+        }
+
+        // Update the percentage text and progress bar
+        percentageText.textContent = `${value}%`;
+        progressBar.style.width = `${value}%`;
+      }
     </script>
 
     <!-- Footer -->
-    <footer class="bg-gray-200 text-black py-5 mt-10 w-full lg:pl-64">
+    <footer class="bg-gray-200 text-black py-5 mt-20 w-full lg:pl-64">
       <div class="w-full mx-auto px-4">
         <div class="flex flex-col lg:flex-row items-center justify-between">
-          <p class="text-sm lg:mb-0 mb-4">
+          <p class="text-sm text-center lg:text-left mb-4 lg:mb-0">
             Privacy Policy . Terms of Service . © 2024-2026 One.HR. All rights
             reserved.
           </p>
